@@ -15,3 +15,16 @@ provide an interface and visualization for planning tournaments.
 I am interested in this project because I have experience running game tournaments,
 and would find benefit from such an application. I also find interest in
 different ways of visualizing data, which would be a core part of this application.
+
+## User Stories
+
+As a user:
+1. I want to be able to create teams and add them to a tournament
+2. I want to be able to view the list of teams in a tournament
+3. I want to be able to select the type of tournament bracket to use, such as:
+    - Single Elimination
+    - Double Elimination
+    - Round Robin
+4. I want to generate a list of games based on the selected bracket type
+5. I want to view the list of games in a bracket view, based on the list of games generated
+6. I want to input scores for each game, and have the bracket updated accordingly
