@@ -16,6 +16,18 @@ public class SingleEliminationStrategy implements Strategy {
     @Override
     public List<Game> generateSchedule(List<Team> teams) {
         List<Game> games = new ArrayList<>();
+
+        for (List<Game> round : generateRounds(teams)) {
+            games.addAll(round);
+        }
+
+        return games;
+    }
+
+    // REQUIRES: teams.size() > 0 && (teams.size() & (teams.size() - 1)) == 0
+    // EFFECTS: generates a list of rounds for the given teams using a single elimination strategy
+    protected List<List<Game>> generateRounds(List<Team> teams) {
+        List<List<Game>> rounds = new ArrayList<>();
         int id = 1;
 
         List<Participant> participants = new ArrayList<>();
@@ -27,7 +39,7 @@ public class SingleEliminationStrategy implements Strategy {
         while (participants.size() > 1) {
             List<Game> round = generateRound(id, participants);
 
-            games.addAll(round);
+            rounds.add(round);
             id += participants.size();
 
             participants.clear();
@@ -36,7 +48,7 @@ public class SingleEliminationStrategy implements Strategy {
             }
         }
 
-        return games;
+        return rounds;
     }
 
     // EFFECTS: returns games for a given list of participants, starting from the given id
