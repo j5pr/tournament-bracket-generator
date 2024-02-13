@@ -1,12 +1,15 @@
 package model.strategy;
 
-import model.Game;
+import model.game.Game;
 import model.Team;
+import model.game.GameContext;
 import model.participant.Participant;
 import model.participant.TeamParticipant;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RoundRobinStrategy implements Strategy {
     private final int groupSize;
@@ -20,18 +23,12 @@ public class RoundRobinStrategy implements Strategy {
 
     // REQUIRES: teams.size() % groupSize == 0
     // EFFECTS: generates a schedule for the given teams using a round-robin strategy
-    public List<Game> generateSchedule(List<Team> teams) {
-        List<List<Team>> groups = generateGroups(teams);
-        List<Game> games = new ArrayList<>();
-
-        int id = 1;
-
-        for (List<Team> group : groups) {
-            games.addAll(generateGames(id, group));
-            id += group.size();
-        }
-
-        return games;
+    public List<Game> generateSchedule(GameContext ctx, List<Team> teams) {
+        return generateGroups(teams)
+            .stream()
+            .map((group) -> generateGames(ctx, group))
+            .flatMap(Collection::stream)
+            .collect(Collectors.toList());
     }
 
     // REQUIRES: teams.size() % groupSize == 0
@@ -54,15 +51,12 @@ public class RoundRobinStrategy implements Strategy {
     }
 
     // EFFECTS: returns games for a given group, starting from the given id
-    private List<Game> generateGames(int id, List<Team> groups) {
+    private List<Game> generateGames(GameContext ctx, List<Team> groups) {
         List<Game> games = new ArrayList<>();
 
         for (int i = 0; i < groups.size(); i++) {
             for (int j = i + 1; j < groups.size(); j++) {
-                Participant participantA = new TeamParticipant(groups.get(i));
-                Participant participantB = new TeamParticipant(groups.get(j));
-
-                games.add(new Game(id++, participantA, participantB));
+                games.add(ctx.createGame(groups.get(i), groups.get(j)));
             }
         }
 

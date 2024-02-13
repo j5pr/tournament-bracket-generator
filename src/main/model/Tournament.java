@@ -1,5 +1,7 @@
 package model;
 
+import model.game.Game;
+import model.game.GameContext;
 import model.strategy.Strategy;
 
 import java.util.ArrayList;
@@ -28,7 +30,7 @@ public class Tournament {
     // MODIFIES: this
     // EFFECTS: generate the games of the tournament using the current strategy
     public void generateGames() {
-        games = strategy.generateSchedule(teams);
+        games = strategy.generateSchedule(new GameContext(), teams);
     }
 
     // getters and setters

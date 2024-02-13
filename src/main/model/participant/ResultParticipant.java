@@ -1,6 +1,6 @@
 package model.participant;
 
-import model.Game;
+import model.game.Game;
 import model.Team;
 
 public class ResultParticipant implements Participant {

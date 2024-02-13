@@ -1,5 +1,6 @@
-package model;
+package model.game;
 
+import model.Team;
 import model.participant.Participant;
 
 public class Game {
@@ -32,7 +33,7 @@ public class Game {
     // EFFECTS: return whether the game is able to be played or not,
     //          i.e. both participants are available and the game is not finished
     public boolean isReady() {
-        return participantA.isAvailable() && participantB.isAvailable();
+        return !isFinished() && participantA.isAvailable() && participantB.isAvailable();
     }
 
     // REQUIRES: isReady() && scoreA != scoreB
