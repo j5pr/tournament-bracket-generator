@@ -74,4 +74,10 @@ public class ResultParticipantTest {
         assertEquals(teamA, winner.getTeam());
         assertEquals(teamB, loser.getTeam());
     }
+
+    @Test
+    public void testGetGame() {
+        assertEquals(game, winner.getGame());
+        assertEquals(game, loser.getGame());
+    }
 }

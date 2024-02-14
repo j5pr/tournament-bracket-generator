@@ -1,5 +1,6 @@
 package model;
 
+import model.game.Game;
 import model.game.GameContext;
 import model.strategy.DoubleEliminationStrategy;
 import model.strategy.RoundRobinStrategy;
@@ -99,5 +100,36 @@ public class TournamentTest {
 
         tournament.setStrategy(c);
         assertEquals(c, tournament.getStrategy());
+    }
+
+    @Test
+    public void testSetGetGames() {
+        Strategy a = new RoundRobinStrategy(2);
+        Strategy b = new SingleEliminationStrategy();
+
+        List<Team> teams = List.of(teamA, teamB, teamC, teamD);
+        tournament.setTeams(teams);
+
+        assertNull(tournament.getGames());
+
+        tournament.setStrategy(a);
+        tournament.generateGames();
+
+        List<Game> gamesA = tournament.getGames();
+
+        tournament.setStrategy(b);
+        tournament.generateGames();
+
+        List<Game> gamesB = tournament.getGames();
+
+        assertEquals(gamesB, tournament.getGames());
+
+        tournament.setGames(gamesA);
+
+        assertEquals(gamesA, tournament.getGames());
+
+        tournament.setGames(null);
+
+        assertNull(tournament.getGames());
     }
 }

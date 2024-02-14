@@ -39,4 +39,8 @@ public class ResultParticipant implements Participant {
     public Team getTeam() {
         return winner ? game.getWinner() : game.getLoser();
     }
+
+    public Game getGame() {
+        return game;
+    }
 }
