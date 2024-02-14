@@ -12,6 +12,7 @@ import model.strategy.Strategy;
 
 import java.util.Scanner;
 
+// console interface to manage a tournament
 public class TournamentApp {
     private final Tournament tournament;
     private final Scanner in;
