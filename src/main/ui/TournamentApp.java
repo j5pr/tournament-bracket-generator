@@ -187,7 +187,7 @@ public class TournamentApp {
     // EFFECTS: asks users for scores of a game, and sets the score of that game
     private void inputResult() {
         int id = Integer.parseInt(prompt("What is the id of the game to edit?"));
-        Game game = findGame(id);
+        Game game = tournament.findReadyGame(id);
 
         if (game == null) {
             System.out.println("Could not find a game that is ready with the specified id!");
@@ -202,18 +202,6 @@ public class TournamentApp {
         game.complete();
 
         System.out.println("Successfully inputted scores!");
-    }
-
-    // EFFECTS: returns any Game with the specified id that is also ready, or null
-    //          if none exists
-    private Game findGame(int id) {
-        return tournament
-            .getGames()
-            .stream()
-            .filter((game) -> game.getId() == id)
-            .filter(Game::isReady)
-            .findAny()
-            .orElse(null);
     }
 
     // EFFECTS: displays menu of options to user

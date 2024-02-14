@@ -35,6 +35,18 @@ public class Tournament {
         games = strategy.generateSchedule(new GameContext(), teams);
     }
 
+    // REQUIRES: getGames() != null
+    // EFFECTS: returns the game in this tournament identified by id if it's ready;
+    //          or null if it is not ready or does not exist
+    public Game findReadyGame(int id) {
+        return games
+            .stream()
+            .filter((game) -> game.getId() == id)
+            .filter(Game::isReady)
+            .findAny()
+            .orElse(null);
+    }
+
     // getters and setters
     public Strategy getStrategy() {
         return strategy;

@@ -1,7 +1,6 @@
 package model.game;
 
 import model.Team;
-import model.game.Game;
 import model.participant.Participant;
 import model.participant.ResultParticipant;
 import model.participant.TeamParticipant;
@@ -16,6 +15,7 @@ class GameTest {
 
     private Game gameA;
     private Game gameB;
+    private Game gameC;
 
     @BeforeEach
     public void runBefore() {
@@ -27,12 +27,19 @@ class GameTest {
 
         gameA = new Game(1, participantA, participantB);
         gameB = new Game(2, participantA, new ResultParticipant(gameA, true));
+        gameC = new Game(3, new ResultParticipant(gameA, true), participantB);
     }
 
     @Test
     public void testIsReady() {
         assertTrue(gameA.isReady());
         assertFalse(gameB.isReady());
+        assertFalse(gameC.isReady());
+
+        gameA.setScoreA(1);
+        gameA.complete();
+
+        assertFalse(gameA.isReady());
     }
 
     @Test

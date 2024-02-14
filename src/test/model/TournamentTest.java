@@ -56,6 +56,21 @@ public class TournamentTest {
     }
 
     @Test
+    public void testReadyGames() {
+        tournament.setTeams(List.of(teamA, teamB, teamC, teamD));
+        tournament.setStrategy(new SingleEliminationStrategy());
+
+        tournament.generateGames();
+        List<Game> games = tournament.getGames();
+
+        assertEquals(games.get(0), tournament.findReadyGame(1));
+        assertEquals(games.get(1), tournament.findReadyGame(2));
+        assertNull(tournament.findReadyGame(3));
+        assertNull(tournament.findReadyGame(4));
+        assertNull(tournament.findReadyGame(7));
+    }
+
+    @Test
     public void testSetGetTeams() {
         List<Team> a = List.of(teamA);
         List<Team> b = List.of(teamB);

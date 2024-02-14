@@ -45,8 +45,13 @@ public class Game {
         Team a = participantA.getTeam();
         Team b = participantB.getTeam();
 
-        winner = scoreA > scoreB ? a : b;
-        loser = scoreA > scoreB ? b : a;
+        if (scoreA > scoreB) {
+            winner = a;
+            loser = b;
+        } else {
+            winner = b;
+            loser = a;
+        }
 
         finished = true;
         return winner;

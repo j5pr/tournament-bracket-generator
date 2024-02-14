@@ -79,4 +79,14 @@ public class SingleEliminationStrategyTest {
         assertEquals("Winner of game 5", games.get(6).getParticipantA().getName());
         assertEquals("Winner of game 6", games.get(6).getParticipantB().getName());
     }
+
+    @Test
+    public void testCanGenerateSchedule() {
+        assertFalse(strategy.canGenerateSchedule(List.of()));
+        assertTrue(strategy.canGenerateSchedule(List.of(teams[0])));
+        assertTrue(strategy.canGenerateSchedule(List.of(teams[0], teams[1])));
+        assertFalse(strategy.canGenerateSchedule(List.of(teams[0], teams[1], teams[2])));
+        assertTrue(strategy.canGenerateSchedule(List.of(teams[0], teams[1], teams[2], teams[3])));
+        assertFalse(strategy.canGenerateSchedule(List.of(teams[0], teams[1], teams[2], teams[3], teams[4])));
+    }
 }
