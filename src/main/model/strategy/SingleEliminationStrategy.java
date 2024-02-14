@@ -12,9 +12,10 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+// a bracket generation strategy that uses single elimination: i.e. a team that loses is immediately eliminated
 public class SingleEliminationStrategy implements Strategy {
 
-    // REQUIRES: teams.size() > 0 && (teams.size() & (teams.size() - 1)) == 0
+    // REQUIRES: canGenerateSchedule()
     // MODIFIES: ctx
     // EFFECTS: generates a schedule for the given teams using a single elimination strategy
     @Override
@@ -25,8 +26,15 @@ public class SingleEliminationStrategy implements Strategy {
             .collect(Collectors.toList());
     }
 
+    // EFFECTS: returns true if the list of teams has a positive size that is a power of 2
+    @Override
+    public boolean canGenerateSchedule(List<Team> teams) {
+        int size = teams.size();
+        return size != 0 && (size & (size - 1)) == 0;
+    }
+
     // REQUIRES: teams.size() > 0 && (teams.size() & (teams.size() - 1)) == 0
-    // MODIFES: ctx
+    // MODIFIES: ctx
     // EFFECTS: generates a list of rounds for the given teams using a single elimination strategy
     protected List<List<Game>> generateRounds(GameContext ctx, List<Team> teams) {
         List<List<Game>> rounds = new ArrayList<>();

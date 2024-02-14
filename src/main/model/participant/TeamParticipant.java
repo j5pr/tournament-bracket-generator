@@ -2,6 +2,7 @@ package model.participant;
 
 import model.Team;
 
+// represents a participant that is a team
 public class TeamParticipant implements Participant {
     private final Team team;
 
@@ -22,6 +23,7 @@ public class TeamParticipant implements Participant {
         return true;
     }
 
+    // EFFECTS: returns this.team
     @Override
     public Team getTeam() {
         return team;

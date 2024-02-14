@@ -11,10 +11,12 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+// a bracket generation strategy that uses double elimination: i.e. to be eliminated, any team must lose twice
 public class DoubleEliminationStrategy extends SingleEliminationStrategy implements Strategy {
-    // REQUIRES: teams.size() > 0 && (teams.size() & (teams.size() - 1)) == 0
-    // MODIFES: ctx
+    // REQUIRES: canGenerateSchedule(teams)
+    // MODIFIES: ctx
     // EFFECTS: generates a schedule for the given teams using a double elimination strategy
+    @Override
     public List<Game> generateSchedule(GameContext ctx, List<Team> teams) {
         if (teams.size() < 4) {
             return super.generateSchedule(ctx, teams);
@@ -48,16 +50,12 @@ public class DoubleEliminationStrategy extends SingleEliminationStrategy impleme
         return allGames.stream().sorted(Comparator.comparingInt(Game::getId)).collect(Collectors.toList());
     }
 
-    // MODIFES: ctx
+    // REQUIRES: winners.size() == losers.size()
+    // MODIFIES: ctx
     // EFFECTS: pairs the winners and losers of a round of games, into a list of
-    //          participants; throws IllegalArgumentException if the winners and
-    //          losers lists have different sizes
+    //          participants
     private List<Game> pairParticipants(GameContext ctx, List<Game> winners, List<Game> losers) {
         List<Participant> participants = new ArrayList<>();
-
-        if (winners.size() != losers.size()) {
-            throw new IllegalArgumentException("Winners and losers must have the same size");
-        }
 
         for (int i = 0; i < winners.size(); i++) {
             participants.add(new ResultParticipant(winners.get(i), false));

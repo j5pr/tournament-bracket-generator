@@ -3,6 +3,7 @@ package model.game;
 import model.Team;
 import model.participant.Participant;
 
+// represents a game, with an id, two participants, and their respective scores
 public class Game {
     private final int id;
 

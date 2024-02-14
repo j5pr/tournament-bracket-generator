@@ -3,8 +3,6 @@ package model.strategy;
 import model.game.Game;
 import model.Team;
 import model.game.GameContext;
-import model.participant.Participant;
-import model.participant.TeamParticipant;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -21,14 +19,22 @@ public class RoundRobinStrategy implements Strategy {
         this.groupSize = groupSize;
     }
 
-    // REQUIRES: teams.size() % groupSize == 0
+    // REQUIRES: canGenerateSchedule()
+    // MODIFIES: ctx
     // EFFECTS: generates a schedule for the given teams using a round-robin strategy
+    @Override
     public List<Game> generateSchedule(GameContext ctx, List<Team> teams) {
         return generateGroups(teams)
             .stream()
             .map((group) -> generateGames(ctx, group))
             .flatMap(Collection::stream)
             .collect(Collectors.toList());
+    }
+
+    // EFFECTS: returns true if teams.size() is a multiple of groupSize
+    @Override
+    public boolean canGenerateSchedule(List<Team> teams) {
+        return teams.size() % groupSize == 0;
     }
 
     // REQUIRES: teams.size() % groupSize == 0
@@ -51,6 +57,7 @@ public class RoundRobinStrategy implements Strategy {
     }
 
     // EFFECTS: returns games for a given group, starting from the given id
+    // MODIFIES: ctx
     private List<Game> generateGames(GameContext ctx, List<Team> groups) {
         List<Game> games = new ArrayList<>();
 

@@ -1,5 +1,6 @@
 package model;
 
+// represents a team, which can play games and participate in a tournament
 public class Team {
     private String name;
 

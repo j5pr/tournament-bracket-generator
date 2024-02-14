@@ -7,6 +7,7 @@ import model.strategy.Strategy;
 import java.util.ArrayList;
 import java.util.List;
 
+// represents a tournament, which has teams, is bracketed using a strategy, and can hold games
 public class Tournament {
     private List<Team> teams;
     private Strategy strategy;
@@ -27,6 +28,7 @@ public class Tournament {
         teams.add(team);
     }
 
+    // REQUIRES: strategy != null
     // MODIFIES: this
     // EFFECTS: generate the games of the tournament using the current strategy
     public void generateGames() {

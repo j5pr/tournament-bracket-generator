@@ -3,6 +3,7 @@ package model.participant;
 import model.game.Game;
 import model.Team;
 
+// a participant that is to be determined by the result of a particular game
 public class ResultParticipant implements Participant {
     private final Game game;
     private final boolean winner;
@@ -36,10 +37,6 @@ public class ResultParticipant implements Participant {
     // EFFECTS: returns the team that represents this participant
     @Override
     public Team getTeam() {
-        if (winner) {
-            return game.getWinner();
-        }
-
-        return game.getLoser();
+        return winner ? game.getWinner() : game.getLoser();
     }
 }
