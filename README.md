@@ -28,3 +28,5 @@ As a user:
 4. I want to generate a list of games based on the selected bracket type
 5. I want to view the list of games in a bracket view, based on the list of games generated
 6. I want to input scores for each game, and have the bracket updated accordingly
+7. I want to be able to save my tournament to file (if I so choose)
+8. I want to be able to be able to load my tournament from file (if I so choose)
