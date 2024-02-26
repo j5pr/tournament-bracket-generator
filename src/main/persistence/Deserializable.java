@@ -1,6 +1,5 @@
 package persistence;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 // represents an object that can be deserialized from a JSON object
