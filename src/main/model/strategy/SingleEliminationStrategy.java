@@ -6,6 +6,8 @@ import model.game.GameContext;
 import model.participant.Participant;
 import model.participant.ResultParticipant;
 import model.participant.TeamParticipant;
+import org.json.JSONObject;
+import persistence.Context;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -51,5 +53,17 @@ public class SingleEliminationStrategy implements Strategy {
         }
 
         return rounds;
+    }
+
+    // EFFECTS: deserializes the given JSON object into this (no fields to deserialize, so is equivalent to a no-op)
+    @Override
+    public void deserialize(JSONObject object, Context context) {
+        // no fields to deserialize
+    }
+
+    // EFFECTS: serialize this strategy to a JSON object
+    @Override
+    public JSONObject serialize() {
+        return new JSONObject().put("type", "SingleEliminationStrategy");
     }
 }

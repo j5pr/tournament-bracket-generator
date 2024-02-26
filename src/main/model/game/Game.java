@@ -2,13 +2,21 @@ package model.game;
 
 import model.Team;
 import model.participant.Participant;
+import org.json.JSONObject;
+import persistence.Context;
+import persistence.Deserializable;
+import persistence.Serializable;
+
+import java.util.function.Supplier;
 
 // represents a game, with an id, two participants, and their respective scores
-public class Game {
-    private final int id;
+public class Game implements Serializable, Deserializable {
+    public static final Supplier<Game> MAKE = () -> new Game(0, null, null);
 
-    private final Participant participantA;
-    private final Participant participantB;
+    private int id;
+
+    private Participant participantA;
+    private Participant participantB;
 
     private int scoreA;
     private int scoreB;
@@ -71,6 +79,44 @@ public class Game {
         scoreB += amount;
     }
 
+    // persistence
+
+    // EFFECTS: serialize this game to a JSON object
+    @Override
+    public JSONObject serialize() {
+        JSONObject obj = new JSONObject();
+
+        obj.put("id", id);
+        obj.put("participantA", participantA.serialize());
+        obj.put("participantB", participantB.serialize());
+        obj.put("scoreA", scoreA);
+        obj.put("scoreB", scoreB);
+        obj.put("finished", finished);
+        obj.put("winner", winner == null ? null : winner.getName());
+        obj.put("loser", loser == null ? null : loser.getName());
+
+        return obj;
+    }
+
+    // MODIFIES: this, ctx
+    // EFFECTS: deserialize the given JSON object into this
+    @Override
+    public void deserialize(JSONObject object, Context ctx) {
+        id = object.getInt("id");
+
+        participantA = Participant.deserializeFrom(object.getJSONObject("participantA"), ctx);
+        participantB = Participant.deserializeFrom(object.getJSONObject("participantB"), ctx);
+
+        scoreA = object.getInt("scoreA");
+        scoreB = object.getInt("scoreB");
+
+        finished = object.getBoolean("finished");
+
+        winner = object.isNull("winner") ? null : ctx.get(Team.class, object.getString("winner"));
+        loser = object.isNull("loser") ? null : ctx.get(Team.class, object.getString("loser"));
+
+        ctx.put(Game.class, id, this);
+    }
 
     // getters & setters
 

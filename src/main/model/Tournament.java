@@ -3,12 +3,17 @@ package model;
 import model.game.Game;
 import model.game.GameContext;
 import model.strategy.Strategy;
+import org.json.JSONObject;
+import persistence.Context;
+import persistence.Deserializable;
+import persistence.Serializable;
+import persistence.serializers.ListSerializer;
 
 import java.util.ArrayList;
 import java.util.List;
 
 // represents a tournament, which has teams, is bracketed using a strategy, and can hold games
-public class Tournament {
+public class Tournament implements Serializable, Deserializable {
     private List<Team> teams;
     private Strategy strategy;
 
@@ -45,6 +50,30 @@ public class Tournament {
             .filter(Game::isReady)
             .findAny()
             .orElse(null);
+    }
+
+    // MODIFIES: this
+    // EFFECTS: deserializes the given JSON object into this
+    @Override
+    public void deserialize(JSONObject object, Context ctx) {
+        teams = ListSerializer.deserialize(object.getJSONArray("teams"), ctx, Team.MAKE);
+
+        strategy = !object.isNull("strategy")
+            ? Strategy.deserializeFrom(object.getJSONObject("strategy"), ctx)
+            : null;
+
+        games = !object.isNull("games")
+            ? ListSerializer.deserialize(object.getJSONArray("games"), ctx, Game.MAKE)
+            : null;
+    }
+
+    // EFFECTS: returns a JSON object representing this tournament
+    @Override
+    public JSONObject serialize() {
+        return new JSONObject()
+            .put("teams", ListSerializer.serialize(teams))
+            .put("strategy", strategy != null ? strategy.serialize() : null)
+            .put("games", games != null ? ListSerializer.serialize(games) : null);
     }
 
     // getters and setters

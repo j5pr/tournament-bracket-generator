@@ -1,10 +1,12 @@
 package model.participant;
 
 import model.Team;
+import org.json.JSONObject;
+import persistence.Context;
 
 // represents a participant that is a team
 public class TeamParticipant implements Participant {
-    private final Team team;
+    private Team team;
 
     // EFFECTS: create a new participant that represents the given team
     public TeamParticipant(Team team) {
@@ -27,5 +29,20 @@ public class TeamParticipant implements Participant {
     @Override
     public Team getTeam() {
         return team;
+    }
+
+    // MODIFIES: this
+    // EFFECTS: deserializes the given JSON object into this participant
+    @Override
+    public void deserialize(JSONObject object, Context ctx) {
+        team = ctx.get(Team.class, object.getString("team"));
+    }
+
+    // EFFECTS: serialize this participant to a JSON object
+    @Override
+    public JSONObject serialize() {
+        return new JSONObject()
+            .put("type", "TeamParticipant")
+            .put("team", team.getName());
     }
 }

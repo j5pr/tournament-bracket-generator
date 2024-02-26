@@ -9,13 +9,19 @@ import model.strategy.DoubleEliminationStrategy;
 import model.strategy.RoundRobinStrategy;
 import model.strategy.SingleEliminationStrategy;
 import model.strategy.Strategy;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.IOException;
+import java.util.Map;
 import java.util.Scanner;
 
 // console interface to manage a tournament
 public class TournamentApp {
-    private final Tournament tournament;
+    private Tournament tournament;
     private final Scanner in;
+
+    Map<Character, Runnable> commands;
 
     // EFFECTS: creates a new tournament app with an empty tournament
     public TournamentApp() {
@@ -23,6 +29,17 @@ public class TournamentApp {
         in = new Scanner(System.in);
 
         in.useDelimiter("\n");
+
+        commands = Map.of(
+            'a', this::addTeam,
+            'l', this::listTeams,
+            's', this::selectStrategy,
+            'g', this::generateBracket,
+            'v', this::viewBracket,
+            'i', this::inputResult,
+            'y', this::save,
+            'p', this::load
+        );
     }
 
     // MODIFIES: this
@@ -37,37 +54,14 @@ public class TournamentApp {
                 break;
             }
 
-            processCommand(command);
+            if (commands.containsKey(command)) {
+                commands.get(command).run();
+            } else {
+                System.out.println("Invalid selection!");
+            }
         }
 
         System.out.println("bye");
-    }
-
-    // MODIFIES: this
-    // EFFECTS: processes user command
-    private void processCommand(char command) {
-        switch (command) {
-            case 'a':
-                addTeam();
-                break;
-            case 'l':
-                listTeams();
-                break;
-            case 's':
-                selectStrategy();
-                break;
-            case 'g':
-                generateBracket();
-                break;
-            case 'v':
-                viewBracket();
-                break;
-            case 'i':
-                inputResult();
-                break;
-            default:
-                System.out.println("Invalid selection!");
-        }
     }
 
     // MODIFIES: this
@@ -205,6 +199,33 @@ public class TournamentApp {
         System.out.println("Successfully inputted scores!");
     }
 
+    // EFFECTS: saves the tournament to a file
+    private void save()  {
+        String fileName = prompt("Filename?");
+
+        try (JsonWriter writer = new JsonWriter(fileName)) {
+            writer.writeObject(tournament);
+
+            System.out.println("Saved " + fileName);
+        } catch (IOException e) {
+            System.out.println("Unable to save to " + fileName);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads the tournament from a file
+    private void load() {
+        String fileName = prompt("Filename?");
+
+        try (JsonReader reader = new JsonReader(fileName)) {
+            tournament = reader.readTournament();
+
+            System.out.println("Loaded " + fileName);
+        } catch (IOException e) {
+            System.out.println("Unable to load from " + fileName);
+        }
+    }
+
     // EFFECTS: displays menu of options to user
     private void displayMenu() {
         System.out.println("\nPlease select an action:");
@@ -227,6 +248,8 @@ public class TournamentApp {
             System.out.println("\t(i) input result");
         }
 
+        System.out.println("\t(y) save");
+        System.out.println("\t(p) load");
         System.out.println("\t(q) quit");
     }
 

@@ -2,11 +2,13 @@ package model.participant;
 
 import model.game.Game;
 import model.Team;
+import org.json.JSONObject;
+import persistence.Context;
 
 // a participant that is to be determined by the result of a particular game
 public class ResultParticipant implements Participant {
-    private final Game game;
-    private final boolean winner;
+    private Game game;
+    private boolean winner;
 
     // EFFECTS: create a new participant that depends on a given game: the winner
     //          of the game if winner == true, otherwise the loser
@@ -42,5 +44,22 @@ public class ResultParticipant implements Participant {
 
     public Game getGame() {
         return game;
+    }
+
+    // MODIFIES: this
+    // EFFECTS: deserializes the given JSON object into this participant
+    @Override
+    public void deserialize(JSONObject object, Context ctx) {
+        game = ctx.get(Game.class, object.getInt("game"));
+        winner = object.getBoolean("winner");
+    }
+
+    // EFFECTS: serialize this participant to a JSON object
+    @Override
+    public JSONObject serialize() {
+        return new JSONObject()
+            .put("type", "ResultParticipant")
+            .put("game", game.getId())
+            .put("winner", winner);
     }
 }

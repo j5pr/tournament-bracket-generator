@@ -5,6 +5,7 @@ import model.Team;
 import model.game.GameContext;
 import model.participant.Participant;
 import model.participant.ResultParticipant;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -63,5 +64,11 @@ public class DoubleEliminationStrategy extends SingleEliminationStrategy impleme
         }
 
         return ctx.pairParticipants(participants);
+    }
+
+    // EFFECTS: serialize this strategy to a JSON object
+    @Override
+    public JSONObject serialize() {
+        return new JSONObject().put("type", "DoubleEliminationStrategy");
     }
 }

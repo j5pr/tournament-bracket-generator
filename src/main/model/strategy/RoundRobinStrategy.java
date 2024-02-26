@@ -3,6 +3,8 @@ package model.strategy;
 import model.game.Game;
 import model.Team;
 import model.game.GameContext;
+import org.json.JSONObject;
+import persistence.Context;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -10,7 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class RoundRobinStrategy implements Strategy {
-    private final int groupSize;
+    private int groupSize;
 
     // REQUIRES: groupSize > 0
     // EFFECTS: constructs a round-robin strategy with the given group size,
@@ -68,5 +70,20 @@ public class RoundRobinStrategy implements Strategy {
         }
 
         return games;
+    }
+
+    // MODIFIES: this
+    // EFFECTS: deserializes the given JSON object into this strategy
+    @Override
+    public void deserialize(JSONObject object, Context context) {
+        groupSize = object.getInt("groupSize");
+    }
+
+    // EFFECTS: serialize this strategy to a JSON object
+    @Override
+    public JSONObject serialize() {
+        return new JSONObject()
+            .put("type", "RoundRobinStrategy")
+            .put("groupSize", groupSize);
     }
 }
