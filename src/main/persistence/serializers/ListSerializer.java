@@ -24,12 +24,9 @@ public class ListSerializer {
         return result;
     }
 
+    // REQUIRES: list != null
     // EFFECTS: serializes the given iterable of objects into a JSON array
     public static <T extends Serializable> JSONArray serialize(Iterable<T> list) {
-        if (list == null) {
-            return null;
-        }
-
         JSONArray result = new JSONArray();
 
         for (Serializable obj : list) {

@@ -9,6 +9,7 @@ import persistence.Deserializable;
 import persistence.Serializable;
 
 import java.util.List;
+import java.util.Objects;
 
 // a strategy used to generate games for a tournament using a GameContext and a list of teams
 public interface Strategy extends Serializable, Deserializable {
@@ -21,7 +22,7 @@ public interface Strategy extends Serializable, Deserializable {
     // EFFECTS: deserializes the given JSON object into a new Strategy of the appropriate type
     static Strategy deserializeFrom(JSONObject obj, Context ctx) {
         String type = obj.getString("type");
-        Strategy strategy;
+        Strategy strategy = null;
 
         switch (type) {
             case "DoubleEliminationStrategy":
@@ -33,11 +34,9 @@ public interface Strategy extends Serializable, Deserializable {
             case "SingleEliminationStrategy":
                 strategy = new SingleEliminationStrategy();
                 break;
-            default:
-                return null;
         }
 
-        strategy.deserialize(obj, ctx);
+        Objects.requireNonNull(strategy).deserialize(obj, ctx);
         return strategy;
     }
 }

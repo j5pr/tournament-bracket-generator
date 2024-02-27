@@ -6,6 +6,8 @@ import persistence.Context;
 import persistence.Deserializable;
 import persistence.Serializable;
 
+import java.util.Objects;
+
 // represents any object that can participate in a game
 public interface Participant extends Serializable, Deserializable {
     // returns the text name for this participant
@@ -24,15 +26,13 @@ public interface Participant extends Serializable, Deserializable {
 
         if (type.equals("ResultParticipant")) {
             participant = new ResultParticipant(null, false);
-        } else if (type.equals("TeamParticipant")) {
+        }
+
+        if (type.equals("TeamParticipant")) {
             participant = new TeamParticipant(null);
         }
 
-        if (participant == null) {
-            return null;
-        }
-
-        participant.deserialize(obj, ctx);
+        Objects.requireNonNull(participant).deserialize(obj, ctx);
         return participant;
     }
 }
