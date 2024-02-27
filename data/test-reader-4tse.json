@@ -1,1 +1,69 @@
-{"teams":[{"name":"a"},{"name":"b"},{"name":"c"},{"name":"d"}],"games":[{"participantB":{"team":"b","type":"TeamParticipant"},"participantA":{"team":"a","type":"TeamParticipant"},"winner":"b","scoreB":2,"finished":true,"id":1,"scoreA":1,"loser":"a"},{"participantB":{"team":"d","type":"TeamParticipant"},"participantA":{"team":"c","type":"TeamParticipant"},"winner":"c","scoreB":0,"finished":true,"id":2,"scoreA":3,"loser":"d"},{"participantB":{"game":2,"winner":true,"type":"ResultParticipant"},"participantA":{"game":1,"winner":true,"type":"ResultParticipant"},"scoreB":0,"finished":false,"id":3,"scoreA":0}],"strategy":{"type":"SingleEliminationStrategy"}}
+{
+  "teams": [
+    {
+      "name": "a"
+    },
+    {
+      "name": "b"
+    },
+    {
+      "name": "c"
+    },
+    {
+      "name": "d"
+    }
+  ],
+  "games": [
+    {
+      "participantB": {
+        "team": "b",
+        "type": "TeamParticipant"
+      },
+      "participantA": {
+        "team": "a",
+        "type": "TeamParticipant"
+      },
+      "winner": "b",
+      "scoreB": 2,
+      "finished": true,
+      "id": 1,
+      "scoreA": 1,
+      "loser": "a"
+    },
+    {
+      "participantB": {
+        "team": "d",
+        "type": "TeamParticipant"
+      },
+      "participantA": {
+        "team": "c",
+        "type": "TeamParticipant"
+      },
+      "winner": "c",
+      "scoreB": 0,
+      "finished": true,
+      "id": 2,
+      "scoreA": 3,
+      "loser": "d"
+    },
+    {
+      "participantB": {
+        "game": 2,
+        "winner": true,
+        "type": "ResultParticipant"
+      },
+      "participantA": {
+        "game": 1,
+        "winner": true,
+        "type": "ResultParticipant"
+      },
+      "scoreB": 0,
+      "finished": false,
+      "id": 3,
+      "scoreA": 0
+    }
+  ],
+  "strategy": {
+    "type": "SingleEliminationStrategy"
+  }
+}

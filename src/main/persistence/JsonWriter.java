@@ -12,6 +12,6 @@ public class JsonWriter extends PrintWriter {
     // MODIFIES: this
     // EFFECTS: writes the given object to the file
     public void writeObject(Serializable obj) {
-        println(obj.serialize().toString());
+        println(obj.serialize().toString(2));
     }
 }
