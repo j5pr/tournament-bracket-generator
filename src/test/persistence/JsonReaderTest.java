@@ -44,33 +44,29 @@ public class JsonReaderTest {
 
     @Test
     public void testFullTournament() {
-        Tournament read = read("test-reader-4tse");
+        try (JsonReader reader = new JsonReader("test-reader-4tse")) {
+            Tournament read = reader.readTournament();
 
-        assertNotNull(read);
-        assertEquals(4, read.getTeams().size());
-        assertEquals(3, read.getGames().size());
-        assertEquals(SingleEliminationStrategy.class, read.getStrategy().getClass());
+            assertNotNull(read);
+            assertEquals(4, read.getTeams().size());
+            assertEquals(3, read.getGames().size());
+            assertEquals(SingleEliminationStrategy.class, read.getStrategy().getClass());
 
-        Game readFirst = read.getGames().get(0);
+            Game readFirst = read.getGames().get(0);
 
-        assertNotNull(readFirst);
-        assertEquals(1, readFirst.getScoreA());
-        assertEquals(2, readFirst.getScoreB());
-        assertTrue(readFirst.isFinished());
+            assertNotNull(readFirst);
+            assertEquals(1, readFirst.getScoreA());
+            assertEquals(2, readFirst.getScoreB());
+            assertTrue(readFirst.isFinished());
 
-        Game readSecond = read.getGames().get(1);
+            Game readSecond = read.getGames().get(1);
 
-        assertNotNull(readSecond);
-        assertEquals(3, readSecond.getScoreA());
-        assertEquals(0, readSecond.getScoreB());
-        assertTrue(readSecond.isFinished());
-    }
-
-    private Tournament read(String file) {
-        try (JsonReader reader = new JsonReader(file)) {
-            return reader.readTournament();
+            assertNotNull(readSecond);
+            assertEquals(3, readSecond.getScoreA());
+            assertEquals(0, readSecond.getScoreB());
+            assertTrue(readSecond.isFinished());
         } catch (IOException e) {
-            return fail("Exception should not have been thrown");
+            fail("Exception should not have been thrown");
         }
     }
 }
