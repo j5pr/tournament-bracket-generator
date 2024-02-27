@@ -24,16 +24,16 @@ public interface Strategy extends Serializable, Deserializable {
         String type = obj.getString("type");
         Strategy strategy = null;
 
-        switch (type) {
-            case "DoubleEliminationStrategy":
-                strategy = new DoubleEliminationStrategy();
-                break;
-            case "RoundRobinStrategy":
-                strategy = new RoundRobinStrategy(1);
-                break;
-            case "SingleEliminationStrategy":
-                strategy = new SingleEliminationStrategy();
-                break;
+        if (type.equals("DoubleEliminationStrategy")) {
+            strategy = new DoubleEliminationStrategy();
+        }
+
+        if (type.equals("RoundRobinStrategy")) {
+            strategy = new RoundRobinStrategy(1);
+        }
+
+        if (type.equals("SingleEliminationStrategy")) {
+            strategy = new SingleEliminationStrategy();
         }
 
         Objects.requireNonNull(strategy).deserialize(obj, ctx);
