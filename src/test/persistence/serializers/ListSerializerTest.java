@@ -2,8 +2,6 @@ package persistence.serializers;
 
 import model.Team;
 import model.game.Game;
-import model.participant.Participant;
-import model.participant.ResultParticipant;
 import model.participant.TeamParticipant;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -36,6 +34,11 @@ public class ListSerializerTest {
         ctx.put(Team.class, "Team 1", team1);
         ctx.put(Team.class, "Team 2", team2);
         ctx.put(Game.class, 1, game);
+    }
+
+    @Test
+    public void testListSerializer() {
+        assertNotNull(new ListSerializer());
     }
 
     @Test

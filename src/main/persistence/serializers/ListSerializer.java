@@ -16,7 +16,7 @@ public class ListSerializer {
         List<T> result = new ArrayList<>();
 
         for (int i = 0; i < list.length(); i++) {
-            T obj  = create.get();
+            T obj = create.get();
             obj.deserialize(list.getJSONObject(i), ctx);
             result.add(obj);
         }
