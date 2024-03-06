@@ -21,7 +21,7 @@ public class TournamentApp {
     private Tournament tournament;
     private final Scanner in;
 
-    Map<Character, Runnable> commands;
+    private final Map<Character, Runnable> commands;
 
     // EFFECTS: creates a new tournament app with an empty tournament
     public TournamentApp() {
