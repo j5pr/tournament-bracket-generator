@@ -34,6 +34,8 @@ public class ResultParticipantTest {
     public void testName1() {
         assertEquals("Winner of game 1", winner.getName());
         assertEquals("Loser of game 1", loser.getName());
+        assertEquals("Winner of game 1", winner.toString());
+        assertEquals("Loser of game 1", loser.toString());
     }
 
     @Test

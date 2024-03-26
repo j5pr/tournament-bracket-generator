@@ -26,6 +26,12 @@ public class Team implements Serializable, Deserializable {
         this.name = name;
     }
 
+    // EFFECTS: returns the name of this team
+    @Override
+    public String toString() {
+        return name;
+    }
+
     // REQUIRES: object has a "name" field
     // MODIFIES: ctx
     // EFFECTS: applies the given object's data to this team

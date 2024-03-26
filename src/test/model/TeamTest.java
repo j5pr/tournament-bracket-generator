@@ -26,4 +26,10 @@ public class TeamTest {
         teamA.setName("123456");
         assertEquals("123456", teamA.getName());
     }
+
+    @Test
+    public void testToString() {
+        assertEquals("Team A", teamA.toString());
+        assertEquals("Team B", teamB.toString());
+    }
 }

@@ -45,4 +45,10 @@ public class TeamParticipant implements Participant {
             .put("type", "TeamParticipant")
             .put("team", team.getName());
     }
+
+    // EFFECTS: return the name of this participant
+    @Override
+    public String toString() {
+        return getName();
+    }
 }

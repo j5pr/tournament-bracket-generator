@@ -62,4 +62,10 @@ public class ResultParticipant implements Participant {
             .put("game", game.getId())
             .put("winner", winner);
     }
+
+    // EFFECTS: return the name of this participant
+    @Override
+    public String toString() {
+        return getName();
+    }
 }

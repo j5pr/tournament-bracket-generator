@@ -19,6 +19,7 @@ public class TeamParticipantTest {
     @Test
     public void testName() {
         assertEquals(team.getName(), participant.getName());
+        assertEquals(team.getName(), participant.toString());
     }
 
     @Test
