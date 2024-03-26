@@ -9,6 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 
+// the main frame for the tournament app
 public class AppFrame extends JFrame {
     private static final int WIDTH = 800;
     private static final int HEIGHT = 600;
@@ -19,18 +20,11 @@ public class AppFrame extends JFrame {
     private final GamesTableModel gamesTableModel;
 
 
-    // EFFECTS: constructs a new AppFrame
+    // EFFECTS: constructs a new AppFrame with an empty tournament
     public AppFrame() {
         super("Tournament App");
 
         tournament = new Tournament();
-
-        // udfuhasduhif
-        try (JsonReader reader = new JsonReader("test-reader-4tse")) {
-            tournament = reader.readTournament();
-        } catch (IOException e) {
-            //
-        }
 
         setLayout(new FlowLayout());
         setSize(WIDTH, HEIGHT);
@@ -43,7 +37,6 @@ public class AppFrame extends JFrame {
         gamesTableModel = new GamesTableModel(this);
 
         setJMenuBar(new AppMenu(this));
-
         add(new AppPanel(this));
 
         pack();
@@ -65,8 +58,9 @@ public class AppFrame extends JFrame {
         return gamesTableModel;
     }
 
+    // EFFECTS: notifies the list model and table model that data has been updated
     public void update() {
-        teamsListModel.update();
-        gamesTableModel.update();
+        teamsListModel.fireContentsChanged();
+        gamesTableModel.fireTableDataChanged();
     }
 }

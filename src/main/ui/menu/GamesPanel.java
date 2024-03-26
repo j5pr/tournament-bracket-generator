@@ -6,10 +6,11 @@ import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+// the panel for displaying games in the tournament
 public class GamesPanel extends JPanel {
     private final AppFrame frame;
 
-    // EFFECTS: constructs a new GamesPanel
+    // EFFECTS: constructs a new GamesPanel with the given AppFrame
     public GamesPanel(AppFrame frame) {
         super();
         this.frame = frame;
@@ -21,12 +22,16 @@ public class GamesPanel extends JPanel {
         addGamesList();
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds a title label to the panel
     private void addTitle() {
         JLabel gamesLabel = new JLabel("Games");
         gamesLabel.setHorizontalAlignment(SwingConstants.CENTER);
         add(gamesLabel);
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds a list of games to the panel
     private void addGamesList() {
         JTable gamesList = new JTable(frame.getGamesTableModel());
         gamesList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -49,6 +54,8 @@ public class GamesPanel extends JPanel {
                         game.setScoreA(scoreA);
                         game.setScoreB(scoreB);
                         game.complete();
+
+                        frame.update();
                     }
                 }
             }

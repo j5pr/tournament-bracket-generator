@@ -7,11 +7,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
+// the panel for displaying and managing teams in the tournament
 public class TeamsPanel extends JPanel {
     private final AppFrame frame;
     private JList<Team> teamsList;
 
-    // EFFECTS: constructs a new TeamsPanel
+    // EFFECTS: constructs a new TeamsPanel with the given AppFrame
     public TeamsPanel(AppFrame frame) {
         super();
         this.frame = frame;
@@ -24,12 +25,16 @@ public class TeamsPanel extends JPanel {
         addButtonPanel();
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds a title label to the panel
     private void addTitle() {
         JLabel teamsLabel = new JLabel("Manage Teams");
         teamsLabel.setHorizontalAlignment(SwingConstants.CENTER);
         add(teamsLabel, BorderLayout.NORTH);
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds a scrollable list of teams to the panel
     private void addTeamsList() {
         teamsList = new JList<>(frame.getTeamsListModel());
         teamsList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -39,6 +44,8 @@ public class TeamsPanel extends JPanel {
         add(new JScrollPane(teamsList), BorderLayout.CENTER);
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds a panel with buttons for adding, removing, and clearing all teams
     private void addButtonPanel() {
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(1, 3));
@@ -58,8 +65,10 @@ public class TeamsPanel extends JPanel {
         add(buttonPanel, BorderLayout.SOUTH);
     }
 
+    // MODIFIES: this
+    // EFFECTS: prompts the user for a team name and adds a new team to the tournament
     private void addTeam(ActionEvent e) {
-        String teamName = JOptionPane.showInputDialog("Enter team name:");
+        String teamName = JOptionPane.showInputDialog(frame, "Enter team name:");
 
         if (teamName != null) {
             frame.getTournament().addTeam(new Team(teamName));
@@ -67,11 +76,15 @@ public class TeamsPanel extends JPanel {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: removes the selected team from the tournament, if one is selected
     private void removeTeam(ActionEvent e) {
         frame.getTournament().getTeams().remove(teamsList.getSelectedValue());
         frame.update();
     }
 
+    // MODIFIES: this
+    // EFFECTS: clears all teams from the tournament
     private void clearTeams(ActionEvent e) {
         frame.getTournament().setTeams(new ArrayList<>());
         frame.update();
