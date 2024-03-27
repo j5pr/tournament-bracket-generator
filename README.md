@@ -30,3 +30,15 @@ As a user:
 6. I want to input scores for each game, and have the bracket updated accordingly
 7. I want to be able to save my tournament to file (if I so choose)
 8. I want to be able to be able to load my tournament from file (if I so choose)
+
+### Instructions for Grader
+- You can generate the first required action related to the user story "adding multiple Xs to a Y" by
+  clicking the "+" button in the Team Manager sidebar once the application is running.
+- You can generate the second required action related to the user story "adding multiple Xs to a Y" by
+  selecting a team in the team list, and clicking the "-" button in the Team Manager.
+- You can locate my visual component by looking at the splash screen, which is an image displayed for at 
+  least 2500ms when the application is first run, before the main window is available.
+- You can save the state of my application by clicking the "Save" button in the File menu,
+  which can be found in the menu bar of the main window.
+- You can reload the state of my application by clicking the "Load" button in the File menu,
+  which can be found in the menu bar of the main window.
