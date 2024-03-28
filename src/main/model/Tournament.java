@@ -1,5 +1,7 @@
 package model;
 
+import model.event.Event;
+import model.event.EventLog;
 import model.game.Game;
 import model.game.GameContext;
 import model.strategy.Strategy;
@@ -31,6 +33,15 @@ public class Tournament implements Serializable, Deserializable {
     // EFFECTS: add a team to the tournament
     public void addTeam(Team team) {
         teams.add(team);
+        EventLog.getInstance().logEvent(new Event("Added team to tournament: " + team.getName()));
+    }
+
+    // REQUIRES: team != null
+    // MODIFIES: this
+    // EFFECTS: removes a team to the tournament
+    public void removeTeam(Team team) {
+        teams.remove(team);
+        EventLog.getInstance().logEvent(new Event("Removed team from tournament: " + team.getName()));
     }
 
     // REQUIRES: strategy != null
@@ -38,6 +49,7 @@ public class Tournament implements Serializable, Deserializable {
     // EFFECTS: generate the games of the tournament using the current strategy
     public void generateGames() {
         games = strategy.generateSchedule(new GameContext(), teams);
+        EventLog.getInstance().logEvent(new Event("Generated games for tournament"));
     }
 
     // REQUIRES: getGames() != null

@@ -100,6 +100,17 @@ public class TournamentTest {
     }
 
     @Test
+    public void testRemoveTeams() {
+        assertEquals(List.of(), tournament.getTeams());
+
+        tournament.addTeam(teamA);
+        assertEquals(List.of(teamA), tournament.getTeams());
+
+        tournament.removeTeam(teamA);
+        assertEquals(List.of(), tournament.getTeams());
+    }
+
+    @Test
     public void testSetGetStrategy() {
         Strategy a = new RoundRobinStrategy(3);
         Strategy b = new SingleEliminationStrategy();

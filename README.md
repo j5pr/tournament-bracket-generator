@@ -42,3 +42,21 @@ As a user:
   which can be found in the menu bar of the main window.
 - You can reload the state of my application by clicking the "Load" button in the File menu,
   which can be found in the menu bar of the main window.
+
+### Phase 4: Task 2
+```
+Thu Mar 28 14:08:33 PDT 2024
+Added team to tournament: team 1
+Thu Mar 28 14:08:35 PDT 2024
+Added team to tournament: team 2
+Thu Mar 28 14:08:37 PDT 2024
+Added team to tournament: team 3
+Thu Mar 28 14:08:39 PDT 2024
+Added team to tournament: team 4
+Thu Mar 28 14:08:41 PDT 2024
+Added team to tournament: team 5
+Thu Mar 28 14:08:43 PDT 2024
+Removed team from tournament: team 3
+Thu Mar 28 14:08:47 PDT 2024
+Generated games for tournament
+```

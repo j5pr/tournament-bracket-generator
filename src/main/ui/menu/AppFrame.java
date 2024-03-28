@@ -1,6 +1,8 @@
 package ui.menu;
 
 import model.Tournament;
+import model.event.Event;
+import model.event.EventLog;
 import persistence.JsonReader;
 import ui.data.GamesTableModel;
 import ui.data.TeamsListModel;
@@ -28,7 +30,17 @@ public class AppFrame extends JFrame {
 
         setLayout(new FlowLayout());
         setSize(WIDTH, HEIGHT);
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            // EFFECTS: prints the event log when the window is closing
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                for (Event e : EventLog.getInstance()) {
+                    System.out.println(e);
+                }
+            }
+        });
+
         setLocationRelativeTo(null);
         setResizable(false);
         setVisible(true);

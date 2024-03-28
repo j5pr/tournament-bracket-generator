@@ -79,7 +79,7 @@ public class TeamsPanel extends JPanel {
     // MODIFIES: this
     // EFFECTS: removes the selected team from the tournament, if one is selected
     private void removeTeam(ActionEvent e) {
-        frame.getTournament().getTeams().remove(teamsList.getSelectedValue());
+        frame.getTournament().removeTeam(teamsList.getSelectedValue());
         frame.update();
     }
 
