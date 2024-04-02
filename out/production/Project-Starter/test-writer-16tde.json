@@ -1,0 +1,489 @@
+{
+  "teams": [
+    {"name": "Team 1"},
+    {"name": "Team 2"},
+    {"name": "Team 3"},
+    {"name": "Team 4"},
+    {"name": "Team 5"},
+    {"name": "Team 6"},
+    {"name": "Team 7"},
+    {"name": "Team 8"},
+    {"name": "Team 9"},
+    {"name": "Team 10"},
+    {"name": "Team 11"},
+    {"name": "Team 12"},
+    {"name": "Team 13"},
+    {"name": "Team 14"},
+    {"name": "Team 15"},
+    {"name": "Team 16"}
+  ],
+  "games": [
+    {
+      "participantB": {
+        "team": "Team 2",
+        "type": "TeamParticipant"
+      },
+      "participantA": {
+        "team": "Team 1",
+        "type": "TeamParticipant"
+      },
+      "winner": "Team 2",
+      "scoreB": 2,
+      "finished": true,
+      "id": 1,
+      "scoreA": 1,
+      "loser": "Team 1"
+    },
+    {
+      "participantB": {
+        "team": "Team 4",
+        "type": "TeamParticipant"
+      },
+      "participantA": {
+        "team": "Team 3",
+        "type": "TeamParticipant"
+      },
+      "scoreB": 0,
+      "finished": false,
+      "id": 2,
+      "scoreA": 0
+    },
+    {
+      "participantB": {
+        "team": "Team 6",
+        "type": "TeamParticipant"
+      },
+      "participantA": {
+        "team": "Team 5",
+        "type": "TeamParticipant"
+      },
+      "scoreB": 0,
+      "finished": false,
+      "id": 3,
+      "scoreA": 0
+    },
+    {
+      "participantB": {
+        "team": "Team 8",
+        "type": "TeamParticipant"
+      },
+      "participantA": {
+        "team": "Team 7",
+        "type": "TeamParticipant"
+      },
+      "scoreB": 0,
+      "finished": false,
+      "id": 4,
+      "scoreA": 0
+    },
+    {
+      "participantB": {
+        "team": "Team 10",
+        "type": "TeamParticipant"
+      },
+      "participantA": {
+        "team": "Team 9",
+        "type": "TeamParticipant"
+      },
+      "scoreB": 0,
+      "finished": false,
+      "id": 5,
+      "scoreA": 0
+    },
+    {
+      "participantB": {
+        "team": "Team 12",
+        "type": "TeamParticipant"
+      },
+      "participantA": {
+        "team": "Team 11",
+        "type": "TeamParticipant"
+      },
+      "scoreB": 0,
+      "finished": false,
+      "id": 6,
+      "scoreA": 0
+    },
+    {
+      "participantB": {
+        "team": "Team 14",
+        "type": "TeamParticipant"
+      },
+      "participantA": {
+        "team": "Team 13",
+        "type": "TeamParticipant"
+      },
+      "scoreB": 0,
+      "finished": false,
+      "id": 7,
+      "scoreA": 0
+    },
+    {
+      "participantB": {
+        "team": "Team 16",
+        "type": "TeamParticipant"
+      },
+      "participantA": {
+        "team": "Team 15",
+        "type": "TeamParticipant"
+      },
+      "scoreB": 0,
+      "finished": false,
+      "id": 8,
+      "scoreA": 0
+    },
+    {
+      "participantB": {
+        "game": 2,
+        "winner": true,
+        "type": "ResultParticipant"
+      },
+      "participantA": {
+        "game": 1,
+        "winner": true,
+        "type": "ResultParticipant"
+      },
+      "scoreB": 0,
+      "finished": false,
+      "id": 9,
+      "scoreA": 0
+    },
+    {
+      "participantB": {
+        "game": 4,
+        "winner": true,
+        "type": "ResultParticipant"
+      },
+      "participantA": {
+        "game": 3,
+        "winner": true,
+        "type": "ResultParticipant"
+      },
+      "scoreB": 0,
+      "finished": false,
+      "id": 10,
+      "scoreA": 0
+    },
+    {
+      "participantB": {
+        "game": 6,
+        "winner": true,
+        "type": "ResultParticipant"
+      },
+      "participantA": {
+        "game": 5,
+        "winner": true,
+        "type": "ResultParticipant"
+      },
+      "scoreB": 0,
+      "finished": false,
+      "id": 11,
+      "scoreA": 0
+    },
+    {
+      "participantB": {
+        "game": 8,
+        "winner": true,
+        "type": "ResultParticipant"
+      },
+      "participantA": {
+        "game": 7,
+        "winner": true,
+        "type": "ResultParticipant"
+      },
+      "scoreB": 0,
+      "finished": false,
+      "id": 12,
+      "scoreA": 0
+    },
+    {
+      "participantB": {
+        "game": 10,
+        "winner": true,
+        "type": "ResultParticipant"
+      },
+      "participantA": {
+        "game": 9,
+        "winner": true,
+        "type": "ResultParticipant"
+      },
+      "scoreB": 0,
+      "finished": false,
+      "id": 13,
+      "scoreA": 0
+    },
+    {
+      "participantB": {
+        "game": 12,
+        "winner": true,
+        "type": "ResultParticipant"
+      },
+      "participantA": {
+        "game": 11,
+        "winner": true,
+        "type": "ResultParticipant"
+      },
+      "scoreB": 0,
+      "finished": false,
+      "id": 14,
+      "scoreA": 0
+    },
+    {
+      "participantB": {
+        "game": 14,
+        "winner": true,
+        "type": "ResultParticipant"
+      },
+      "participantA": {
+        "game": 13,
+        "winner": true,
+        "type": "ResultParticipant"
+      },
+      "scoreB": 0,
+      "finished": false,
+      "id": 15,
+      "scoreA": 0
+    },
+    {
+      "participantB": {
+        "game": 2,
+        "winner": false,
+        "type": "ResultParticipant"
+      },
+      "participantA": {
+        "game": 1,
+        "winner": false,
+        "type": "ResultParticipant"
+      },
+      "scoreB": 0,
+      "finished": false,
+      "id": 16,
+      "scoreA": 0
+    },
+    {
+      "participantB": {
+        "game": 4,
+        "winner": false,
+        "type": "ResultParticipant"
+      },
+      "participantA": {
+        "game": 3,
+        "winner": false,
+        "type": "ResultParticipant"
+      },
+      "scoreB": 0,
+      "finished": false,
+      "id": 17,
+      "scoreA": 0
+    },
+    {
+      "participantB": {
+        "game": 6,
+        "winner": false,
+        "type": "ResultParticipant"
+      },
+      "participantA": {
+        "game": 5,
+        "winner": false,
+        "type": "ResultParticipant"
+      },
+      "scoreB": 0,
+      "finished": false,
+      "id": 18,
+      "scoreA": 0
+    },
+    {
+      "participantB": {
+        "game": 8,
+        "winner": false,
+        "type": "ResultParticipant"
+      },
+      "participantA": {
+        "game": 7,
+        "winner": false,
+        "type": "ResultParticipant"
+      },
+      "scoreB": 0,
+      "finished": false,
+      "id": 19,
+      "scoreA": 0
+    },
+    {
+      "participantB": {
+        "game": 16,
+        "winner": true,
+        "type": "ResultParticipant"
+      },
+      "participantA": {
+        "game": 9,
+        "winner": false,
+        "type": "ResultParticipant"
+      },
+      "scoreB": 0,
+      "finished": false,
+      "id": 20,
+      "scoreA": 0
+    },
+    {
+      "participantB": {
+        "game": 17,
+        "winner": true,
+        "type": "ResultParticipant"
+      },
+      "participantA": {
+        "game": 10,
+        "winner": false,
+        "type": "ResultParticipant"
+      },
+      "scoreB": 0,
+      "finished": false,
+      "id": 21,
+      "scoreA": 0
+    },
+    {
+      "participantB": {
+        "game": 18,
+        "winner": true,
+        "type": "ResultParticipant"
+      },
+      "participantA": {
+        "game": 11,
+        "winner": false,
+        "type": "ResultParticipant"
+      },
+      "scoreB": 0,
+      "finished": false,
+      "id": 22,
+      "scoreA": 0
+    },
+    {
+      "participantB": {
+        "game": 19,
+        "winner": true,
+        "type": "ResultParticipant"
+      },
+      "participantA": {
+        "game": 12,
+        "winner": false,
+        "type": "ResultParticipant"
+      },
+      "scoreB": 0,
+      "finished": false,
+      "id": 23,
+      "scoreA": 0
+    },
+    {
+      "participantB": {
+        "game": 21,
+        "winner": true,
+        "type": "ResultParticipant"
+      },
+      "participantA": {
+        "game": 20,
+        "winner": true,
+        "type": "ResultParticipant"
+      },
+      "scoreB": 0,
+      "finished": false,
+      "id": 24,
+      "scoreA": 0
+    },
+    {
+      "participantB": {
+        "game": 23,
+        "winner": true,
+        "type": "ResultParticipant"
+      },
+      "participantA": {
+        "game": 22,
+        "winner": true,
+        "type": "ResultParticipant"
+      },
+      "scoreB": 0,
+      "finished": false,
+      "id": 25,
+      "scoreA": 0
+    },
+    {
+      "participantB": {
+        "game": 24,
+        "winner": true,
+        "type": "ResultParticipant"
+      },
+      "participantA": {
+        "game": 13,
+        "winner": false,
+        "type": "ResultParticipant"
+      },
+      "scoreB": 0,
+      "finished": false,
+      "id": 26,
+      "scoreA": 0
+    },
+    {
+      "participantB": {
+        "game": 25,
+        "winner": true,
+        "type": "ResultParticipant"
+      },
+      "participantA": {
+        "game": 14,
+        "winner": false,
+        "type": "ResultParticipant"
+      },
+      "scoreB": 0,
+      "finished": false,
+      "id": 27,
+      "scoreA": 0
+    },
+    {
+      "participantB": {
+        "game": 27,
+        "winner": true,
+        "type": "ResultParticipant"
+      },
+      "participantA": {
+        "game": 26,
+        "winner": true,
+        "type": "ResultParticipant"
+      },
+      "scoreB": 0,
+      "finished": false,
+      "id": 28,
+      "scoreA": 0
+    },
+    {
+      "participantB": {
+        "game": 28,
+        "winner": true,
+        "type": "ResultParticipant"
+      },
+      "participantA": {
+        "game": 15,
+        "winner": false,
+        "type": "ResultParticipant"
+      },
+      "scoreB": 0,
+      "finished": false,
+      "id": 29,
+      "scoreA": 0
+    },
+    {
+      "participantB": {
+        "game": 29,
+        "winner": true,
+        "type": "ResultParticipant"
+      },
+      "participantA": {
+        "game": 15,
+        "winner": true,
+        "type": "ResultParticipant"
+      },
+      "scoreB": 0,
+      "finished": false,
+      "id": 30,
+      "scoreA": 0
+    }
+  ],
+  "strategy": {"type": "DoubleEliminationStrategy"}
+}
