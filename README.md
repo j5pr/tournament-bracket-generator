@@ -72,4 +72,5 @@ This can also be applied to the GameContext object in my main model. Currently,
 GameContext is only used to track the creation of Games and assign appropriate
 identifiers. I would improve this by removing the GameContext class, and expose
 specific methods to Strategy classes that would create a queue of un-identified
-games, and assign identifiers at the end.
+games, and assign identifiers at the end. This would reduce the need for an
+entire class to keep track of one trivial piece of information.
